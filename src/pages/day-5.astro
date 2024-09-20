@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="content">
+    <h1>Responsive layouts don't have to be a struggle</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, illo
+      dolor? Saepe, culpa quos. A provident deserunt similique.
+    </p>
+  </div>
+
+  <a
+    class="btn"
+    href="#"
+    >I want to learn</a
+  >
+</div>
+
+<style>
+  :root {
+    --primary-color: #23424a;
+    --secondary-color: #136c72;
+    --tertiary-color: #38cfd9;
+  }
+
+  /* set font family */
+  body {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--primary-color);
+    padding: 6rem 3rem;
+  }
+
+  .content {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    h1 {
+      color: white;
+      font-size: 48px;
+      font-weight: 900;
+      margin: 0;
+    }
+
+    p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 21px;
+      margin: 0;
+    }
+  }
+
+  .btn {
+    margin-top: 2rem;
+    background-color: var(--tertiary-color);
+    color: var(--secondary-color);
+    font-size: 21px;
+    font-weight: 700;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    text-decoration: none;
+    width: fit-content;
+    text-transform: uppercase;
+  }
+</style>
