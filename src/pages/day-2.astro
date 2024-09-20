@@ -1,0 +1,160 @@
+---
+import { Code } from 'astro:components'
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title="Day 2">
+  <div class="container">
+    <h1>Ems vs Rems</h1>
+    <p>
+      In CSS, both em and rem are relative units of measurement often used for
+      font sizing, spacing (like padding and margins), and other layout-related
+      properties. While they are similar, they refer to different contexts, and
+      their usage depends on what you want to achieve in terms of scalability
+      and consistency.
+    </p>
+    <div class="grid">
+      <div class="col">
+        <h2>When to use ems</h2>
+        <p>
+          em is relative to the font-size of the element it is applied to or the
+          parent element, depending on the context. It can scale proportionally
+          based on inheritance.
+        </p>
+        <p>
+          Use case: When you want an element or its children to scale relative
+          to the element’s own font size or a parent container. This allows
+          nested elements to scale up or down based on the hierarchy.
+        </p>
+        <ul>
+          <li>
+            For components where the size should adapt based on the parent
+            element's font size.
+          </li>
+          <li>
+            For modular and reusable components, where scaling should happen
+            automatically within a specific scope.
+          </li>
+          <li>To create a cascading effect for nested elements.</li>
+        </ul>
+        <Code
+          style="padding: 10px; border-radius: 5px; margin: 0;"
+          code={`/* Button with padding based on its own font size */ 
+    
+    button {
+      font-size: 16px;
+      padding: 1em; /* padding will be 16px (1em) based on the button's font size */
+    }
+    
+    /* Nested elements scaling with their parent font-size */
+    .container {
+      font-size: 20px;
+    }
+    .container p {
+      font-size: 1.5em; /* The paragraph's font-size will be 30px (1.5 * 20px) */
+    }`}
+          lang="css"
+          theme="dracula"
+        />
+
+        <h2>Summary</h2>
+        <p>
+          em: Use when you need elements to scale relative to their parent or
+          themselves. Useful for local, nested scaling.
+        </p>
+      </div>
+      <div class="col">
+        <h2>When to use rems</h2>
+        <p>
+          rem stands for “root em” and is relative to the root font size
+          (usually the html element, defaulting to 16px unless specified). It is
+          consistent across the document, regardless of where it is applied.
+        </p>
+        <p>
+          Use case: When you need consistency throughout the design, where the
+          size scales relative to a base size, independent of the parent
+          elements.
+        </p>
+        <ul>
+          <li>
+            For global font scaling that is consistent across the entire page.
+          </li>
+          <li>
+            For spacing, such as margins and padding, when you want predictable
+            results based on the root size.
+          </li>
+          <li>
+            In responsive design, rem can be helpful when adjusting the root
+            font size with media queries, allowing the entire layout to scale
+            proportionally.
+          </li>
+        </ul>
+
+        <Code
+          style="padding: 10px; border-radius: 5px; margin: 0;"
+          code={`/* Global font sizes based on the root font size */
+html {
+  font-size: 16px; /* Default base size */
+}
+
+h1 {
+  font-size: 2rem; /* 32px (2 * 16px) */
+}
+
+p {
+  font-size: 1rem; /* 16px, matches the root font size */
+}`}
+          lang="css"
+          theme="dracula"
+        />
+
+        <h2>Summary</h2>
+        <p>
+          rem: Use when you want consistent, global scaling relative to the root
+          element. Useful for maintaining consistency in typography and layout
+          throughout the design.
+        </p>
+      </div>
+    </div>
+
+    <style>
+      h1,
+      h2 {
+        color: rgb(18, 212, 242);
+      }
+
+      .container {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        background-color: #0c0d12;
+        color: #f8f8f2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem;
+        padding-bottom: 4rem;
+      }
+
+      .grid {
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      /* below desktop */
+      @media (max-width: 768px) {
+        .grid {
+          grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+      }
+
+      .col {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+    </style>
+  </div></Layout
+>
